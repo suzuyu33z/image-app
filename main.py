@@ -2,11 +2,13 @@ import streamlit as st
 from supabase import create_client, Client
 import uuid
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
-# Supabaseの設定
-SUPABASE_URL = "https://fefsquepzkrcptguenvk.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZlZnNxdWVwemtyY3B0Z3VlbnZrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwOTg0MzQsImV4cCI6MjA1NzY3NDQzNH0.s5wmGiEG7XeR7jPaxibTLscMRBQG3V6Jmhp1KX9-MCw"
+load_dotenv()
 
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 st.title("📸 シンプル画像投稿アプリ")
